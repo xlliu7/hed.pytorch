@@ -62,7 +62,7 @@ def show_learning_rate(optimizer):
 class Trainer(object):
 
     def __init__(self, cuda, generator,  optimizerG, 
-                 train_loader, val_loader, out, max_iter):
+                 train_loader, val_loader, out, max_epochs):
         self.cuda = cuda
 
         self.generator = generator
@@ -77,7 +77,7 @@ class Trainer(object):
         # self.iteration = 0
         # self.max_iter = max_iter
         self.step = 2
-        self.nepochs = 8
+        self.nepochs = max_epochs
         self.disp_interval = 100
         self.timeformat = '%Y-%m-%d %H:%M:%S'
         # self.label = Variable(torch.FloatTensor(1).cuda())
