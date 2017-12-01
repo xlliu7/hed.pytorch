@@ -10,7 +10,7 @@ def crop(d, g):
     return d1
 
 class HED(nn.Module):
-    def __init__(self, dilation=0):
+    def __init__(self, dilation=1):
         super(HED, self).__init__()
         self.conv1 = nn.Sequential(
             # conv1
@@ -63,7 +63,7 @@ class HED(nn.Module):
         self.upscore3 = nn.UpsamplingBilinear2d(scale_factor=4)
         self.upscore4 = nn.UpsamplingBilinear2d(scale_factor=8)
         
-        if dilation > 0:
+        if dilation > 1:
             self.conv5 = nn.Sequential(
                 # conv5
                 nn.MaxPool2d(2, stride=1,  padding=1, ceil_mode=False),  # 1/8
